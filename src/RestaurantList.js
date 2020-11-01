@@ -12,7 +12,7 @@ class RestaurantList extends Component {
 			<div className="RestaurantList">
 				<div className="RestaurantList-restaurant">
 					{this.props.Restaurants.map((r) => (
-						<Restaurant name={r.name} img={r.img} />
+						<Restaurant key = {r.name} name={r.name} img={r.img} />
 					))}
 				</div>
 			</div>
