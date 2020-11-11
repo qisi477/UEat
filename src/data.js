@@ -17,7 +17,8 @@ const data = [
             { dish: 'dish1', img: 'https://source.unsplash.com/1600x900/?Coffee' },
             { dish: 'dish2', img: 'https://source.unsplash.com/1600x900/?Apple' },
             { dish: 'dish3', img: 'https://source.unsplash.com/1600x900/?Tea' },
-            { dish: 'dish4', img: 'https://source.unsplash.com/1600x900/?Banana' }
+            { dish: 'dish4', img: 'https://source.unsplash.com/1600x900/?Banana' },
+            { dish: 'dish5', img: 'https://source.unsplash.com/1600x900/?Coffee' }
         ]
     },
 
@@ -28,7 +29,9 @@ const data = [
             { dish: 'dish1', img: 'https://source.unsplash.com/1600x900/?Banana' },
             { dish: 'dish2', img: 'https://source.unsplash.com/1600x900/?Coffee' },
             { dish: 'dish3', img: 'https://source.unsplash.com/1600x900/?Apple' },
-            { dish: 'dish4', img: 'https://source.unsplash.com/1600x900/?Tea' }
+            { dish: 'dish4', img: 'https://source.unsplash.com/1600x900/?Tea' },
+            { dish: 'dish5', img: 'https://source.unsplash.com/1600x900/?Tea' },
+            { dish: 'dish6', img: 'https://source.unsplash.com/1600x900/?Apple' }
         ]
     },
 
@@ -39,7 +42,10 @@ const data = [
             { dish: 'dish1', img: 'https://source.unsplash.com/1600x900/?Apple' },
             { dish: 'dish2', img: 'https://source.unsplash.com/1600x900/?Tea' },
             { dish: 'dish3', img: 'https://source.unsplash.com/1600x900/?Banana' },
-            { dish: 'dish4', img: 'https://source.unsplash.com/1600x900/?Coffee' }
+            { dish: 'dish4', img: 'https://source.unsplash.com/1600x900/?Coffee' },
+            { dish: 'dish5', img: 'https://source.unsplash.com/1600x900/?Coffee' },
+            { dish: 'dish6', img: 'https://source.unsplash.com/1600x900/?Apple' },
+            { dish: 'dish7', img: 'https://source.unsplash.com/1600x900/?Tea' },
         ]
     },
 
@@ -50,7 +56,9 @@ const data = [
             { dish: 'dish1', img: 'https://source.unsplash.com/1600x900/?Tea' },
             { dish: 'dish2', img: 'https://source.unsplash.com/1600x900/?Banana' },
             { dish: 'dish3', img: 'https://source.unsplash.com/1600x900/?Coffee' },
-            { dish: 'dish4', img: 'https://source.unsplash.com/1600x900/?Apple' }
+            { dish: 'dish4', img: 'https://source.unsplash.com/1600x900/?Apple' },
+            { dish: 'dish5', img: 'https://source.unsplash.com/1600x900/?Banana' },
+            { dish: 'dish6', img: 'https://source.unsplash.com/1600x900/?Coffee' }
         ]
     }
 ]

@@ -1,8 +1,18 @@
 import React, { Component } from 'react';
+import Dish from './Dish';
+import './Menu.css';
 
 class Menu extends Component {
     render() {
-        return <h1> {this.props.restaurant.name} Menu </h1>
+        return (
+			<div className="Menu">
+				<div className="Menu-dish">
+					{this.props.restaurant.menu.map((m) => (
+						<Dish key={m.dish} name={m.dish} img={m.img} />
+					))}
+				</div>
+			</div>
+		);
     }
 }
 
