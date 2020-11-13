@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import data from './data';
 import Restaurant from './Restaurant';
 import './RestaurantList.css';
 
@@ -8,7 +7,7 @@ class RestaurantList extends Component {
 		return (
 			<div className="RestaurantList">
 				<div className="RestaurantList-restaurant">
-					{data.map((r) => (
+					{this.props.restaurants.map((r) => (
 						<Restaurant key={r.name} name={r.name} img={r.logo} />
 					))}
 				</div>

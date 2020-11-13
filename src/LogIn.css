@@ -1,0 +1,17 @@
+.LogIn {
+	display: flex;
+  	align-items: center;
+	justify-content: center;
+	padding: 10px;
+	margin: 1rem;
+}
+
+.LogIn-form {
+	width: 400px;
+	padding: 10px 30px 10px 30px;
+	margin: 1rem;
+	box-shadow: 7px 10px 12px -5px rgba(0, 0, 0, 0.56);
+	background-color: white;
+	border-radius: 3px;
+}
+
