@@ -1,4 +1,4 @@
-.LogIn {
+.SignIn {
 	display: flex;
   	align-items: center;
 	justify-content: center;
@@ -6,7 +6,7 @@
 	margin: 1rem;
 }
 
-.LogIn-form {
+.SignIn-form {
 	width: 400px;
 	padding: 10px 30px 10px 30px;
 	margin: 1rem;

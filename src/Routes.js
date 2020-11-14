@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import RestaurantList from './RestaurantList';
 import Menu from './Menu';
-import LogIn from './LogIn';
+import SignIn from './SignIn';
+import Register from './Register';
 
 class Routes extends Component {
     render() {
@@ -20,7 +21,8 @@ class Routes extends Component {
                 <Route exact path='/' render={() =>
                     <RestaurantList restaurants={this.props.restaurants} />}>
                 </Route>
-                <Route exact path='/Login' render={() => <LogIn />}></Route>
+                <Route exact path='/SignIn' render={() => <SignIn />}></Route>
+                <Route exact path='/Register' render={() => <Register />}></Route>
                 <Route exact path='/:name' render={getMenu}></Route>
                 <Redirect to='/' />
             </Switch>

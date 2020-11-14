@@ -12,9 +12,7 @@ class Navbar extends Component {
     ));
     return (
       <nav className='navbar navbar-expand-lg navbar-light bg-light'>
-        <Link className='navbar-brand' to='/'>
-          UEat
-        </Link>
+        <Link className='navbar-brand' to='/'>UEat</Link>
 
         <button
           className='navbar-toggler'
@@ -35,9 +33,7 @@ class Navbar extends Component {
 
           <ul className='navbar-nav' >
             <li className='nav-item'>
-              <NavLink exact to='/login' className='nav-link'>
-                Log In
-              </NavLink>
+              <NavLink exact to='/SignIn' className='nav-link'>Sign In</NavLink>
             </li>
           </ul>
 
