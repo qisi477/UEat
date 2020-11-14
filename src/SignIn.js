@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
+import { withRouter } from 'react-router-dom';
+import Database from "./Database"
 import './SignIn.css';
 
 class SignIn extends Component {
@@ -15,8 +17,8 @@ class SignIn extends Component {
     }
 
     handleClick() {
-        console.log(this.state.email);
-        console.log(this.state.password);
+        Database.signIn(this.state.email, this.state.password);
+        // console.log(Database.getUser());
     }
 
     render() {
@@ -69,4 +71,4 @@ class SignIn extends Component {
 
 }
 
-export default SignIn;
+export default withRouter(SignIn);

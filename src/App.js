@@ -4,7 +4,10 @@ import Routes from './Routes';
 import data from './Data';
 
 class App extends Component {
-	static defaultProps = {restaurants : data};
+	static defaultProps = {
+		restaurants : data,
+		user : null
+	};
 	render() {
 		return (
 			<div>
