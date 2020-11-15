@@ -1,9 +1,19 @@
+import React, { Component, createContext } from "react";
+import { withRouter } from 'react-router-dom';
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
+import data from './Data';
 
-class Database {
-    constructor() {
+export const DatabaseContext = createContext();
+
+class DatabaseProvider extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { restaurants: data, user: null };
+        this.signIn = this.signIn.bind(this);
+        this.signOut = this.signOut.bind(this);
+
         const firebaseConfig = {
             apiKey: "AIzaSyB6F6PHFhFdLa_WeVubFSpDHbItasCSXs0",
             authDomain: "ueat-c91c3.firebaseapp.com",
@@ -18,34 +28,34 @@ class Database {
     }
 
     signIn = (email, password) => {
-        firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
-            alert(error.message)
+        firebase.auth().signInWithEmailAndPassword(email, password).catch((error) => {
+            alert(error.message);
         });
-    }
 
-    signOut = () => firebase.auth().signOut();
-
-    getUser = () => {
-        firebase.auth().onAuthStateChanged(function (user) {
+        firebase.auth().onAuthStateChanged((user) => {
             if (user) {
-                // User is signed in.
-                var displayName = user.displayName;
-                var email = user.email;
-                var emailVerified = user.emailVerified;
-                var photoURL = user.photoURL;
-                var isAnonymous = user.isAnonymous;
-                var uid = user.uid;
-                var providerData = user.providerData;
-                // ...
-                return user;
-            } else {
-                // User is signed out.
-                // ...
-                return null;
+                this.setState({ user: user });
+                this.props.history.push("/");
             }
         });
     }
 
+    signOut = () => {
+        firebase.auth().signOut();
+        this.setState({ user: null });
+    }
+
+    render() {
+        return (
+            <DatabaseContext.Provider value={{
+                    ...this.state,
+                    signIn: this.signIn,
+                    signOut: this.signOut
+                }}>
+                {this.props.children}
+            </DatabaseContext.Provider>
+        );
+    }
 }
 
-export default new Database();
+export default withRouter(DatabaseProvider);

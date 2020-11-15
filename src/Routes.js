@@ -4,12 +4,14 @@ import RestaurantList from './RestaurantList';
 import Menu from './Menu';
 import SignIn from './SignIn';
 import Register from './Register';
+import { DatabaseContext } from './Database';
 
 class Routes extends Component {
+    static contextType = DatabaseContext;
     render() {
         const getMenu = props => {
             let input = props.match.params.name;
-            let cur = this.props.restaurants.find(
+            let cur = this.context.restaurants.find(
                 restaurant => restaurant.name.toLowerCase() === input.toLowerCase()
             );
             return cur == null ?
@@ -18,8 +20,7 @@ class Routes extends Component {
         }
         return (
             <Switch>
-                <Route exact path='/' render={() =>
-                    <RestaurantList restaurants={this.props.restaurants} />}>
+                <Route exact path='/' render={() => <RestaurantList />}>
                 </Route>
                 <Route exact path='/SignIn' render={() => <SignIn />}></Route>
                 <Route exact path='/Register' render={() => <Register />}></Route>
