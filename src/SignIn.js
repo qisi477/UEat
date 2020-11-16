@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import { withRouter } from 'react-router-dom';
 import { DatabaseContext } from './Database';
 import './SignIn.css';
 
@@ -19,6 +18,7 @@ class SignIn extends Component {
 
     handleClick() {
         this.context.signIn(this.state.email, this.state.password);
+        this.setState({ password: "" });
     }
 
     render() {
@@ -71,4 +71,4 @@ class SignIn extends Component {
 
 }
 
-export default withRouter(SignIn);
+export default SignIn;

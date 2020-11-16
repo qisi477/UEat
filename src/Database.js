@@ -45,13 +45,27 @@ class DatabaseProvider extends Component {
         this.setState({ user: null });
     }
 
+    signUp = (email, password) => {
+        firebase.auth().createUserWithEmailAndPassword(email, password).catch((error) => {
+            alert(error.message);
+        });
+
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                this.setState({ user: user });
+                this.props.history.push("/");
+            }
+        });
+    }
+
     render() {
         return (
             <DatabaseContext.Provider value={{
-                    ...this.state,
-                    signIn: this.signIn,
-                    signOut: this.signOut
-                }}>
+                ...this.state,
+                signIn: this.signIn,
+                signOut: this.signOut,
+                signUp: this.signUp
+            }}>
                 {this.props.children}
             </DatabaseContext.Provider>
         );
