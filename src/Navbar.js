@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { NavLink, Link } from "react-router-dom";
 import { DatabaseContext } from "./Database";
-import "./Navbar.css"
 
 class Navbar extends Component {
   static contextType = DatabaseContext;
@@ -24,7 +23,6 @@ class Navbar extends Component {
       </li>
     ));
 
-    console.log(this.context);
     return (
       <nav className='navbar navbar-expand-lg navbar-light bg-light'>
         <Link className='navbar-brand' to='/'>UEat</Link>
@@ -49,9 +47,17 @@ class Navbar extends Component {
           <ul className='navbar-nav' >
             <li className='nav-item'>
               {this.context.user !== null ?
-                <button type="button" className="btn btn-link"
-                  onClick={this.handleClick}>Sign Out</button> :
-                <Link to='/SignIn' className="Navbar-link">Sign In</Link>}
+                <NavLink exact to='/Profile' className='nav-link'>
+                  Profile</NavLink> :
+                null}
+            </li>
+
+            <li className='nav-item'>
+              {this.context.user !== null ?
+                <NavLink exact to='/SignOut' className='nav-link' onClick={this.handleClick}>
+                  Sign Out</NavLink> :
+                <NavLink exact to='/SignIn' className='nav-link'>
+                  Sign In</NavLink>}
             </li>
           </ul>
 

@@ -4,6 +4,7 @@ import RestaurantList from './RestaurantList';
 import Menu from './Menu';
 import SignIn from './SignIn';
 import Register from './Register';
+import Profile from './Profile';
 import { DatabaseContext } from './Database';
 
 class Routes extends Component {
@@ -24,6 +25,7 @@ class Routes extends Component {
                 </Route>
                 <Route exact path='/SignIn' render={() => <SignIn />}></Route>
                 <Route exact path='/Register' render={() => <Register />}></Route>
+                <Route exact path='/Profile' render={() => <Profile />}></Route>
                 <Route exact path='/:name' render={getMenu}></Route>
                 <Redirect to='/' />
             </Switch>

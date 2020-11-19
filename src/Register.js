@@ -47,7 +47,7 @@ class Register extends Component {
             <div className="Register">
                 <form className="Register-form">
 
-                    <h3>Register</h3>
+                    <h3 className="text-center">Register</h3>
 
                     <div className="form-group">
                         <label>Email</label>
