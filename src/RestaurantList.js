@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { v4 as uuid } from 'uuid';
 import Restaurant from './Restaurant';
 import { DatabaseContext } from './Database';
 import './RestaurantList.css';
@@ -10,7 +11,7 @@ class RestaurantList extends Component {
 			<div className="RestaurantList">
 				<div className="RestaurantList-restaurant">
 					{this.context.restaurants.map((r) => (
-						<Restaurant key={r.name} name={r.name} img={r.logo} />
+						<Restaurant key={uuid()} name={r.name} img={r.logo} />
 					))}
 				</div>
 			</div>

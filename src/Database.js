@@ -15,14 +15,14 @@ class DatabaseProvider extends Component {
         this.signOut = this.signOut.bind(this);
 
         const firebaseConfig = {
-            apiKey: "AIzaSyB6F6PHFhFdLa_WeVubFSpDHbItasCSXs0",
-            authDomain: "ueat-c91c3.firebaseapp.com",
-            databaseURL: "https://ueat-c91c3.firebaseio.com",
-            projectId: "ueat-c91c3",
-            storageBucket: "ueat-c91c3.appspot.com",
-            messagingSenderId: "47834770750",
-            appId: "1:47834770750:web:7b09cc2d075e3ebaa5106f",
-            measurementId: "G-1DE1FNH67H"
+            apiKey: "AIzaSyAzH_g64YiTVM_PgyyRWv_ysyx8QhGwVJA",
+            authDomain: "ueats-db53d.firebaseapp.com",
+            databaseURL: "https://ueats-db53d.firebaseio.com",
+            projectId: "ueats-db53d",
+            storageBucket: "ueats-db53d.appspot.com",
+            messagingSenderId: "664301657031",
+            appId: "1:664301657031:web:af5ccf0845196e8a0f57e2",
+            measurementId: "G-TDG42VV6HG"
         };
         firebase.initializeApp(firebaseConfig);
     }
