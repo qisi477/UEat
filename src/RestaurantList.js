@@ -11,7 +11,9 @@ class RestaurantList extends Component {
 			<div className="RestaurantList">
 				<div className="RestaurantList-restaurant">
 					{this.context.restaurants.map((r) => (
-						<Restaurant key={uuid()} name={r.name} img={r.logo} />
+						<Restaurant key={uuid()}
+							name={r.restaurantName}
+							img={r.restaurantLogo} />
 					))}
 				</div>
 			</div>

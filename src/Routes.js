@@ -13,7 +13,7 @@ class Routes extends Component {
         const getMenu = props => {
             let input = props.match.params.name;
             let cur = this.context.restaurants.find(
-                restaurant => restaurant.name.toLowerCase() === input.toLowerCase()
+                restaurant => restaurant.restaurantName.toLowerCase() === input.toLowerCase()
             );
             return cur == null ?
                 <Redirect to='/' /> :

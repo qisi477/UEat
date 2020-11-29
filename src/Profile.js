@@ -12,9 +12,9 @@ class Profile extends Component {
             firstName: "",
             lastName: "",
             restaurantName: "",
-            resraurantLogo: "",
-            resraurantLocation: "",
-            resraurantMenu: []
+            restaurantLogo: "",
+            restaurantLocation: "",
+            restaurantMenu: []
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSave = this.handleSave.bind(this);
@@ -24,12 +24,18 @@ class Profile extends Component {
         this.updateDish = this.updateDish.bind(this);
     }
 
+    componentDidMount(){
+        if(this.context.profile !== ""){
+            this.setState(this.context.profile);
+        }
+    }
+
     handleChange(evt) {
         this.setState({ [evt.target.name]: evt.target.value });
     }
 
     handleSave() {
-        console.log(this.state);
+        this.context.writeUserData(this.context.user.uid, this.state);
     }
 
     handleCancel() {
@@ -37,15 +43,15 @@ class Profile extends Component {
             firstName: "",
             lastName: "",
             restaurantName: "",
-            resraurantLogo: "",
-            resraurantLocation: "",
-            resraurantMenu: []
+            restaurantLogo: "",
+            restaurantLocation: "",
+            restaurantMenu: []
         });
     }
 
     addDish() {
         this.setState({
-            resraurantMenu: [...this.state.resraurantMenu, {
+            restaurantMenu: [...this.state.restaurantMenu, {
                 id: uuid(),
                 dishName: "",
                 dishImage: ""
@@ -55,12 +61,12 @@ class Profile extends Component {
 
     removeDish(id) {
         this.setState({
-            resraurantMenu: this.state.resraurantMenu.filter(dish => dish.id !== id)
+            restaurantMenu: this.state.restaurantMenu.filter(dish => dish.id !== id)
         });
     }
 
     updateDish(id, updatedDishName, updatedDishImage) {
-        const updatedMenu = this.state.resraurantMenu.map(dish => {
+        const updatedMenu = this.state.restaurantMenu.map(dish => {
             if (dish.id === id) {
                 return {
                     ...dish,
@@ -70,11 +76,11 @@ class Profile extends Component {
             }
             return dish;
         });
-        this.setState({ resraurantMenu: updatedMenu });
+        this.setState({ restaurantMenu: updatedMenu });
     }
 
     render() {
-        const menu = this.state.resraurantMenu.map(m => {
+        const menu = this.state.restaurantMenu.map(m => {
             return <MenuInput key={m.id} id={m.id}
                 dishName={m.dishName} dishImage={m.dishImage}
                 removeDish={this.removeDish}
@@ -122,30 +128,30 @@ class Profile extends Component {
                     </div>
 
                     <div className="form-group">
-                        <label>Resraurant Logo</label>
+                        <label>Restaurant Logo</label>
                         <input
                             type="url"
-                            name="resraurantLogo"
+                            name="restaurantLogo"
                             className="form-control"
-                            placeholder="Enter resraurant logo"
-                            value={this.state.resraurantLogo}
+                            placeholder="Enter restaurant logo"
+                            value={this.state.restaurantLogo}
                             onChange={this.handleChange} />
                     </div>
 
                     <div className="form-group">
-                        <label>Resraurant Location</label>
+                        <label>Restaurant Location</label>
                         <input
                             type="text"
-                            name="resraurantLocation"
+                            name="restaurantLocation"
                             className="form-control"
-                            placeholder="Enter resraurant location"
-                            value={this.state.resraurantLocation}
+                            placeholder="Enter restaurant location"
+                            value={this.state.restaurantLocation}
                             onChange={this.handleChange} />
                     </div>
 
                     <div className="form-group">
                         <div className="form-row">
-                            <label className="col-md-6">Resraurant Menu</label>
+                            <label className="col-md-6">Restaurant Menu</label>
                             <button type="button"
                                 className="btn btn-link btn-sm ml-auto"
                                 onClick={this.addDish}

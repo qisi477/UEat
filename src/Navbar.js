@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { NavLink, Link } from "react-router-dom";
+import { v4 as uuid } from 'uuid';
 import { DatabaseContext } from "./Database";
 
 class Navbar extends Component {
@@ -16,9 +17,9 @@ class Navbar extends Component {
 
   render() {
     const restaurantLinks = this.context.restaurants.map(r => (
-      <li className='nav-item' key={r.name}>
-        <NavLink exact to={`/${r.name}`} className='nav-link'>
-          {r.name}
+      <li className='nav-item' key={uuid()}>
+        <NavLink exact to={`/${r.restaurantName}`} className='nav-link'>
+          {r.restaurantName}
         </NavLink>
       </li>
     ));
@@ -46,14 +47,14 @@ class Navbar extends Component {
 
           <ul className='navbar-nav' >
             <li className='nav-item'>
-              {this.context.user !== null ?
+              {this.context.user !== "" ?
                 <NavLink exact to='/Profile' className='nav-link'>
                   Profile</NavLink> :
                 null}
             </li>
 
             <li className='nav-item'>
-              {this.context.user !== null ?
+              {this.context.user !== "" ?
                 <NavLink exact to='/SignOut' className='nav-link' onClick={this.handleClick}>
                   Sign Out</NavLink> :
                 <NavLink exact to='/SignIn' className='nav-link'>
