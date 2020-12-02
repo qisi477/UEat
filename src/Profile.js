@@ -35,18 +35,11 @@ class Profile extends Component {
     }
 
     handleSave() {
-        this.context.writeUserData(this.context.user.uid, this.state);
+        this.context.updateUserData(this.context.user.uid, this.state);
     }
 
     handleCancel() {
-        this.setState({
-            firstName: "",
-            lastName: "",
-            restaurantName: "",
-            restaurantLogo: "",
-            restaurantLocation: "",
-            restaurantMenu: []
-        });
+        this.context.cancelUpdate();
     }
 
     addDish() {
