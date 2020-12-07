@@ -22,6 +22,7 @@ class Profile extends Component {
         this.addDish = this.addDish.bind(this);
         this.removeDish = this.removeDish.bind(this);
         this.updateDish = this.updateDish.bind(this);
+        this.isValid = this.isValid.bind(this);
     }
 
     componentDidMount(){
@@ -35,11 +36,37 @@ class Profile extends Component {
     }
 
     handleSave() {
-        this.context.updateUserData(this.context.user.uid, this.state);
+        if(this.isValid()){
+            this.context.updateUserData(this.context.user.uid, this.state);
+        }
     }
 
     handleCancel() {
         this.context.cancelUpdate();
+    }
+
+    isValid() {
+        if (this.state.firstName === "") {
+            alert("Please enter your first name");
+            return false;
+        } else if (this.state.lastName === "") {
+            alert("Please enter your last name");
+            return false;
+        }else if(this.state.restaurantName === ""){
+            alert("Please enter your restaurant name");
+            return false;
+        }else if(this.state.restaurantLogo === ""){
+            alert("Please enter your restaurant logo");
+            return false;
+        }else if(this.state.restaurantLocation === ""){
+            alert("Please enter your restaurant location");
+            return false;
+        }else if(this.state.restaurantMenu === []){
+            alert("Please enter your restaurant menu");
+            return false;
+        } else {
+            return true;
+        }
     }
 
     addDish() {
