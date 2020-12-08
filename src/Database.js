@@ -62,7 +62,6 @@ class DatabaseProvider extends Component {
                 data.push(this.state.cloud[key]);
             }
             this.setState({ restaurants: data });
-            console.log("update");
         }
     }
 
@@ -100,10 +99,10 @@ class DatabaseProvider extends Component {
     updateUserData = (userId, state) => {
         firebase.database().ref(userId).set(state);
         this.setState({ profile: state });
-        this.props.history.push("/");
+        this.props.history.goBack();
     }
 
-    cancelUpdate() {
+    cancelUpdate = () => {
         this.props.history.goBack();
     }
 

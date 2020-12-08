@@ -10,7 +10,11 @@ class Menu extends Component {
 				<p>{this.props.restaurant.restaurantLocation}</p>
 				<div className="Menu-dish">
 					{this.props.restaurant.restaurantMenu.map((m) => (
-						<Dish key={m.id} name={m.dishName} img={m.dishImage} />
+						<Dish key={m.id} 
+						name={m.dishName} 
+						img={m.dishImage} 
+						descrip={m.dishDescrip}
+						stock={m.stock}/>
 					))}
 				</div>
 			</div>

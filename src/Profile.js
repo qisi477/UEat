@@ -22,11 +22,13 @@ class Profile extends Component {
         this.addDish = this.addDish.bind(this);
         this.removeDish = this.removeDish.bind(this);
         this.updateDish = this.updateDish.bind(this);
-        this.isValid = this.isValid.bind(this);
+        this.isValidProfile = this.isValidProfile.bind(this);
+        this.isValidMenu = this.isValidMenu.bind(this);
+        this.isValidDish = this.isValidDish.bind(this);
     }
 
-    componentDidMount(){
-        if(this.context.profile !== ""){
+    componentDidMount() {
+        if (this.context.profile !== "") {
             this.setState(this.context.profile);
         }
     }
@@ -36,7 +38,7 @@ class Profile extends Component {
     }
 
     handleSave() {
-        if(this.isValid()){
+        if (this.isValidProfile()) {
             this.context.updateUserData(this.context.user.uid, this.state);
         }
     }
@@ -45,24 +47,49 @@ class Profile extends Component {
         this.context.cancelUpdate();
     }
 
-    isValid() {
+    isValidProfile() {
         if (this.state.firstName === "") {
             alert("Please enter your first name");
             return false;
         } else if (this.state.lastName === "") {
             alert("Please enter your last name");
             return false;
-        }else if(this.state.restaurantName === ""){
+        } else if (this.state.restaurantName === "") {
             alert("Please enter your restaurant name");
             return false;
-        }else if(this.state.restaurantLogo === ""){
-            alert("Please enter your restaurant logo");
+        } else if (this.state.restaurantLogo === "") {
+            alert("Please enter your restaurant logo URL");
             return false;
-        }else if(this.state.restaurantLocation === ""){
+        } else if (this.state.restaurantLocation === "") {
             alert("Please enter your restaurant location");
             return false;
-        }else if(this.state.restaurantMenu === []){
+        } else if (this.state.restaurantMenu.length === 0) {
             alert("Please enter your restaurant menu");
+            return false;
+        } else {
+            return this.isValidMenu();
+        }
+    }
+
+    isValidMenu() {
+        let isValid = true;
+        this.state.restaurantMenu.forEach(dish => {
+            if (!this.isValidDish(dish)) {
+                isValid = false;
+            }
+        });
+        return isValid;
+    }
+
+    isValidDish(dish) {
+        if (dish.dishName === "") {
+            alert("Please enter dish name");
+            return false;
+        } else if (dish.dishImage === "") {
+            alert("Please enter dish image URL");
+            return false;
+        } else if (dish.dishDescrip === "") {
+            alert("Please enter dish image descrip");
             return false;
         } else {
             return true;
@@ -74,7 +101,9 @@ class Profile extends Component {
             restaurantMenu: [...this.state.restaurantMenu, {
                 id: uuid(),
                 dishName: "",
-                dishImage: ""
+                dishImage: "",
+                dishDescrip: "",
+                stock: "true"
             }]
         });
     }
@@ -85,13 +114,15 @@ class Profile extends Component {
         });
     }
 
-    updateDish(id, updatedDishName, updatedDishImage) {
+    updateDish(id, updatedDishName, updatedDishImage, updatedDescrip, updatedStock) {
         const updatedMenu = this.state.restaurantMenu.map(dish => {
             if (dish.id === id) {
                 return {
                     ...dish,
                     dishName: updatedDishName,
-                    dishImage: updatedDishImage
+                    dishImage: updatedDishImage,
+                    dishDescrip: updatedDescrip,
+                    stock: updatedStock
                 };
             }
             return dish;
@@ -103,6 +134,8 @@ class Profile extends Component {
         const menu = this.state.restaurantMenu.map(m => {
             return <MenuInput key={m.id} id={m.id}
                 dishName={m.dishName} dishImage={m.dishImage}
+                dishDescrip={m.dishDescrip}
+                stock={m.stock}
                 removeDish={this.removeDish}
                 updateDish={this.updateDish} />
         });
@@ -153,7 +186,7 @@ class Profile extends Component {
                             type="url"
                             name="restaurantLogo"
                             className="form-control"
-                            placeholder="Enter restaurant logo"
+                            placeholder="Enter restaurant logo URL"
                             value={this.state.restaurantLogo}
                             onChange={this.handleChange} />
                     </div>
